@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d3t8g03gjyp20"]
+
+[ext_resource type="PackedScene" uid="uid://c2gjkfpic1iwn" path="res://Gun.glb" id="1_vk1bi"]
+[ext_resource type="Script" uid="uid://bt8qr4byv15tk" path="res://bullet.gd" id="2_dk5gl"]
+[ext_resource type="PackedScene" uid="uid://cw8cnpiebdo3e" path="res://bullet.tscn" id="3_kw0bs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kw0bs"]
+no_depth_test = true
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Gun" unique_id=1425872664 instance=ExtResource("1_vk1bi")]
+
+[node name="Cube" parent="." index="0" unique_id=119593732]
+transform = Transform3D(-0.05000001, 0, 0, 0, 0.069998406, 0.003897231, 0, -0.00047035608, 0.57998705, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_kw0bs")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." index="2" unique_id=1463573881]
+transform = Transform3D(1, 0, 0, 0, 0.99988234, 0.015340842, 0, -0.015340842, 0.99988234, 0, -0.048402816, 0)
+script = ExtResource("2_dk5gl")
+
+[node name="Bullet" parent="." index="3" unique_id=2108722660 instance=ExtResource("3_kw0bs")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.43940866)

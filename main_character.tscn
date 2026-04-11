@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://8fs1n0uu0j52"]
+
+[ext_resource type="Script" uid="uid://bin4554pe3tx3" path="res://main_character.gd" id="1_48ufq"]
+[ext_resource type="PackedScene" uid="uid://cw8cnpiebdo3e" path="res://bullet.tscn" id="2_uvl38"]
+[ext_resource type="PackedScene" uid="uid://d3t8g03gjyp20" path="res://gun.tscn" id="2_wmkwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvl38"]
+albedo_color = Color(11.836593, 2.3863204, 10.017527, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f3njc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48ufq"]
+
+[node name="MainCharacter" type="CharacterBody3D" unique_id=2056619798 groups=["player"]]
+script = ExtResource("1_48ufq")
+bullet_scene = ExtResource("2_uvl38")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=583662923]
+material_override = SubResource("StandardMaterial3D_uvl38")
+mesh = SubResource("CapsuleMesh_f3njc")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1431461296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4781096, 0)
+cull_mask = 1047553
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=892719417]
+shape = SubResource("CapsuleShape3D_48ufq")
+
+[node name="Gun" parent="." unique_id=1425872664 instance=ExtResource("2_wmkwl")]
+transform = Transform3D(-1.045, 0, -1.5779061e-07, 0, 1.045, 0, 1.5779061e-07, 0, -1.045, 0.32265502, 0.28969997, -1.3609967)
