@@ -1,25 +1,28 @@
 extends CharacterBody3D
-
 var health = 100
+var max_health = 100
 var is_dead = false
 var spawn_point: Vector3
 
-@onready var player = get_tree().get_first_node_in_group("player")
-
 func take_damage(amount: int):
+	if is_dead:
+		return
 	health -= amount
 	print("Dummy health: ", health)
 	if health <= 0:
-		is_dead = true
-		print("Dummy dead!")
-		respawn()
+		die()
 
-func respawn():
-	health = 100
-	is_dead = false
+func die():
+	is_dead = true
+	print("Dummy dead!")
 	visible = false
 	$CollisionShape3D.disabled = true
 	await get_tree().create_timer(5.0).timeout
+	respawn()
+
+func respawn():
+	health = max_health
+	is_dead = false
 	global_position = spawn_point
 	visible = true
 	$CollisionShape3D.disabled = false

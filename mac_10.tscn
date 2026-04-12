@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bsihc5vsrhw3g"]
+
+[ext_resource type="PackedScene" uid="uid://b0w07c8b3438m" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/mac10.glb" id="1_h7dvl"]
+
+[node name="mac_10" type="Node3D" unique_id=1034199966]
+
+[node name="mac_10" parent="." unique_id=1530854718 instance=ExtResource("1_h7dvl")]

@@ -1,28 +1,11 @@
 [gd_scene format=3 uid="uid://cw8cnpiebdo3e"]
 
-[ext_resource type="Script" uid="uid://bdmw0or40qgr2" path="res://hit_detection.gd" id="1_v7oki"]
 [ext_resource type="Script" uid="uid://bt8qr4byv15tk" path="res://bullet.gd" id="1_v8qja"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dk5gl"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_v8qja"]
-material = SubResource("StandardMaterial3D_dk5gl")
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t4vbm"]
+[ext_resource type="PackedScene" uid="uid://gqprpkmre7fq" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/bullet1.glb" id="2_t4vbm"]
 
 [node name="Bullet" type="CharacterBody3D" unique_id=1543615070 groups=["bullet"]]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 script = ExtResource("1_v8qja")
 
-[node name="Bullet" type="MeshInstance3D" parent="." unique_id=1206231501]
-transform = Transform3D(0.23, 0, 0, 0, -1.0053619e-08, -0.23000002, 0, 0.22999999, -1.005362e-08, -0.0061443, 0.03233263, 0.07831144)
-layers = 1048575
-mesh = SubResource("CapsuleMesh_v8qja")
-
-[node name="Area3D" type="Area3D" parent="Bullet" unique_id=2129756368]
-transform = Transform3D(2.24, 0, 0, 0, 2.24, 0, 0, 0, 2.24, 0, 0, 0)
-script = ExtResource("1_v7oki")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet/Area3D" unique_id=387710560]
-shape = SubResource("CapsuleShape3D_t4vbm")
+[node name="bullet12" parent="." unique_id=515426254 instance=ExtResource("2_t4vbm")]
+transform = Transform3D(19.505, 0, 0, 0, -8.525906e-07, -19.505, 0, 19.505, -8.525906e-07, 0, 0, 0)

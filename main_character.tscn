@@ -1,31 +1,45 @@
 [gd_scene format=3 uid="uid://8fs1n0uu0j52"]
 
 [ext_resource type="Script" uid="uid://bin4554pe3tx3" path="res://main_character.gd" id="1_48ufq"]
-[ext_resource type="PackedScene" uid="uid://cw8cnpiebdo3e" path="res://bullet.tscn" id="2_uvl38"]
-[ext_resource type="PackedScene" uid="uid://d3t8g03gjyp20" path="res://gun.tscn" id="2_wmkwl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvl38"]
-albedo_color = Color(11.836593, 2.3863204, 10.017527, 1)
+[ext_resource type="PackedScene" uid="uid://d2qqk7mldic24" path="res://playerUi.tscn" id="4_2q423"]
+[ext_resource type="PackedScene" uid="uid://oxmigsyu5idx" path="res://ak_47.tscn" id="4_8yqgs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f3njc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48ufq"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uvl38"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="MainCharacter" type="CharacterBody3D" unique_id=2056619798 groups=["player"]]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
 script = ExtResource("1_48ufq")
-bullet_scene = ExtResource("2_uvl38")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=583662923]
-material_override = SubResource("StandardMaterial3D_uvl38")
 mesh = SubResource("CapsuleMesh_f3njc")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1431461296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4781096, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4781096, 0.059109807)
 cull_mask = 1047553
 current = true
+fov = 45.3
+near = 0.01
+
+[node name="ak_47" parent="Camera3D" unique_id=861563308 instance=ExtResource("4_8yqgs")]
+transform = Transform3D(-0.0066912044, 0, 0.13483408, 0, 0.135, 0, -0.13483408, 0, -0.0066912044, 0.01606536, -0.016740933, -0.06974093)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=892719417]
 shape = SubResource("CapsuleShape3D_48ufq")
 
-[node name="Gun" parent="." unique_id=1425872664 instance=ExtResource("2_wmkwl")]
-transform = Transform3D(-1.045, 0, -1.5779061e-07, 0, 1.045, 0, 1.5779061e-07, 0, -1.045, 0.32265502, 0.28969997, -1.3609967)
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=953233612]
+replication_config = SubResource("SceneReplicationConfig_uvl38")
+
+[node name="Control" parent="." unique_id=1998660719 instance=ExtResource("4_2q423")]

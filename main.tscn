@@ -1,22 +1,24 @@
 [gd_scene format=3 uid="uid://cetab35pquslj"]
 
 [ext_resource type="Script" uid="uid://n2o2xasmiwwd" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://8fs1n0uu0j52" path="res://main_character.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://fidi6elsos55" path="res://dummy.tscn" id="3_h2yge"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
 
 [sub_resource type="Sky" id="Sky_0xm2m"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
-background_color = Color(1, 0.82934195, 0.78784084, 1)
+background_color = Color(0.45173937, 0.44922966, 0.5319738, 1)
 sky = SubResource("Sky_0xm2m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.9672434, 0.7250903, 0.86760205, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ig7tw"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(1.9974976, 0.49951172, 2.0722656)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+size = Vector3(1.0744629, 6.3476563, 1)
 
 [node name="Main" type="Node3D" unique_id=935206790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0010875314, 0)
@@ -24,27 +26,47 @@ script = ExtResource("1_0xm2m")
 
 [node name="Enviornment" type="Node3D" parent="." unique_id=359307703]
 
-[node name="Objects" type="MeshInstance3D" parent="Enviornment" unique_id=1399564237]
-transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, -0.4664734, 0.1205492, -0.535383)
-mesh = SubResource("BoxMesh_ig7tw")
-
-[node name="Objects2" type="MeshInstance3D" parent="Enviornment" unique_id=2104443657]
-transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0.474926, 0.11138639, 0.49695396)
-mesh = SubResource("BoxMesh_ig7tw")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviornment" unique_id=1480894903]
 environment = SubResource("Environment_h2yge")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=792354840]
 
 [node name="Ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=562983396]
+material_override = SubResource("StandardMaterial3D_ig7tw")
 mesh = SubResource("PlaneMesh_7dm0k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=274366211]
-shape = SubResource("ConcavePolygonShape3D_ig7tw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005706787, -0.25024414, 0.03149414)
+shape = SubResource("BoxShape3D_0xm2m")
 
-[node name="Dummy" parent="." unique_id=84563858 instance=ExtResource("3_h2yge")]
-transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, -0.08741316, 0.09522843, 0)
+[node name="WorldBorder" type="StaticBody3D" parent="." unique_id=1943580793]
 
-[node name="MainCharacter" parent="." unique_id=2056619798 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.08, 0.455)
+[node name="BorderShape" type="CollisionShape3D" parent="WorldBorder" unique_id=60445867]
+transform = Transform3D(1.86, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.00073219184, 0.3589887, -1.0661134)
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="BorderShape2" type="CollisionShape3D" parent="WorldBorder" unique_id=500047083]
+transform = Transform3D(1.86, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.00073219184, 0.3589887, 1.0455897)
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="BorderShape3" type="CollisionShape3D" parent="WorldBorder" unique_id=2073026356]
+transform = Transform3D(-8.1303185e-08, 0, -0.10999999, 0, 0.11, 0, 1.86, 0, -4.8082525e-09, 1.05805, 0.3589887, -0.0031034648)
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="BorderShape4" type="CollisionShape3D" parent="WorldBorder" unique_id=1445228033]
+transform = Transform3D(-8.1303185e-08, 0, -0.10999999, 0, 0.11, 0, 1.86, 0, -4.8082525e-09, -1.0591341, 0.3589887, -0.0031034648)
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=159501696]
+
+[node name="SpawnPoint1" type="Marker3D" parent="SpawnPoints" unique_id=46760508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012264162, 0.5640438)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SpawnPoints" unique_id=1990373710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58534896, 0.012264162, 0)
+
+[node name="SpawnPoint3" type="Marker3D" parent="SpawnPoints" unique_id=1147007159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61526704, 0.012264162, 0)
+
+[node name="SpawnPoint4" type="Marker3D" parent="SpawnPoints" unique_id=1101708785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012264162, -0.6554619)

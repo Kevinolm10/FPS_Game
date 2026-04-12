@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dnxlt4isdbhjg"]
+
+[ext_resource type="PackedScene" uid="uid://dpwwyntpmptbf" path="res://main_menu.tscn" id="1_cxtqw"]
+[ext_resource type="PackedScene" uid="uid://i38bemeqk60a" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/ak47.glb" id="1_n60sg"]
+[ext_resource type="Script" uid="uid://bjyr3akmhocds" path="res://menubuttons.gd" id="1_xta1c"]
+[ext_resource type="PackedScene" uid="uid://dg4oj85bfinw1" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/quadrocket.glb" id="2_cxtqw"]
+[ext_resource type="PackedScene" uid="uid://rhb30b87e3wx" path="res://play.tscn" id="4_n0nlu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8c74q"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cxtqw"]
+
+[sub_resource type="Sky" id="Sky_n0nlu"]
+sky_material = SubResource("PhysicalSkyMaterial_cxtqw")
+
+[sub_resource type="Environment" id="Environment_cxtqw"]
+background_mode = 2
+sky = SubResource("Sky_n0nlu")
+
+[node name="MainMenu" type="Node3D" unique_id=659987200]
+script = ExtResource("1_xta1c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1641439638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0665898, 0)
+mesh = SubResource("CylinderMesh_8c74q")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=621769825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0667067, 1.0665898, -2.1570816)
+mesh = SubResource("CylinderMesh_8c74q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1020240791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1417427, 1.0665898, 0)
+mesh = SubResource("CylinderMesh_8c74q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1001045710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2938182, 1.0665898, -3.5246725)
+mesh = SubResource("CylinderMesh_8c74q")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1375499583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61494, 1.8929262)
+environment = SubResource("Environment_cxtqw")
+current = true
+
+[node name="ak472" parent="." unique_id=1489386309 instance=ExtResource("1_n60sg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59021175, 2.6280751, -0.35894847)
+
+[node name="quadrocket2" parent="." unique_id=973363190 instance=ExtResource("2_cxtqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4044417, 2.8958395, 0)
+
+[node name="MainMenu" parent="." unique_id=284432339 instance=ExtResource("1_cxtqw")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1967191304]
+transform = Transform3D(-0.9957729, 3.935335e-09, -0.09184931, -0.042436875, 0.8868657, 0.46007416, 0.081457995, 0.46202725, -0.88311684, 0, 3.962451, -4.42906)
+light_energy = 3.462
+
+[node name="PlayUI" parent="." unique_id=404227257 instance=ExtResource("4_n0nlu")]
