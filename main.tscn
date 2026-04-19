@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cetab35pquslj"]
 
 [ext_resource type="Script" uid="uid://n2o2xasmiwwd" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c6hvmy4ab2nyj" path="res://start_game.tscn" id="2_0xm2m"]
 
 [sub_resource type="Sky" id="Sky_0xm2m"]
 
@@ -70,3 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61526704, 0.012264162, 0)
 
 [node name="SpawnPoint4" type="Marker3D" parent="SpawnPoints" unique_id=1101708785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012264162, -0.6554619)
+
+[node name="StartGame" parent="." unique_id=1110941525 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.045, 0)

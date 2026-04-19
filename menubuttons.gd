@@ -1,7 +1,5 @@
 extends Node3D
-
 var main_menu = true
-
 @onready var main_menuUi = $MainMenu
 @onready var play = $MainMenu/MainMenuButtons/Play
 @onready var settings = $MainMenu/MainMenuButtons/Settings
@@ -10,7 +8,7 @@ var main_menu = true
 @onready var host = $PlayUI/PlayUIButtons/Host
 @onready var join = $PlayUI/PlayUIButtons/Join
 @onready var backB = $PlayUI/PlayUIButtons/Back
-@onready var ip_input = $PlayUI/PlayUIButtons/HostIP  # reference the LineEdit
+@onready var ip_input = $PlayUI/PlayUIButtons/HostIP
 
 func _ready():
 	hide_buttons()
@@ -36,6 +34,7 @@ func _on_play_pressed():
 func _on_host_pressed():
 	NetworkManager.server()
 	get_tree().change_scene_to_file("res://main.tscn")
+	# _spawn_host() is called from main.gd _ready() on the server
 
 func _on_join_pressed():
 	var ip = ip_input.text.strip_edges()
@@ -44,8 +43,8 @@ func _on_join_pressed():
 		return
 	print("Joining: ", ip)
 	NetworkManager.client(ip)
-	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://main.tscn")
+	# notify_ready is called from main.gd _ready() on the client
 
 func _on_back_pressed():
 	main_menu = true

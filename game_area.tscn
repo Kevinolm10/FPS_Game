@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cc3dtlm0c4l4u"]
+
+[ext_resource type="PackedScene" uid="uid://3ab42n2lg1ye" path="res://water.tscn" id="1_2jawf"]
+[ext_resource type="Script" uid="uid://bhv8s6o6og5tj" path="res://game_area.gd" id="1_jhsbd"]
+[ext_resource type="PackedScene" uid="uid://c0jut6oigvhu0" path="res://platform.tscn" id="2_kjgfh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvdq0"]
+albedo_color = Color(0.45982563, 0.3734363, 1.92523e-07, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_at62a"]
+material = SubResource("StandardMaterial3D_fvdq0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjgfh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6pj22"]
+sky_top_color = Color(0.42339927, 0.57042086, 0.7935143, 1)
+sky_horizon_color = Color(0.6325104, 0.7380501, 0.88328224, 1)
+
+[sub_resource type="Sky" id="Sky_euob4"]
+sky_material = SubResource("ProceduralSkyMaterial_6pj22")
+
+[sub_resource type="Environment" id="Environment_qao77"]
+background_mode = 2
+sky = SubResource("Sky_euob4")
+
+[node name="game_area" type="Node3D" unique_id=1049462890]
+script = ExtResource("1_jhsbd")
+
+[node name="water" type="StaticBody3D" parent="." unique_id=1441401413]
+
+[node name="ground" type="MeshInstance3D" parent="water" unique_id=156464859]
+transform = Transform3D(20.34, 0, 0, 0, 20.34, 0, 0, 0, 20.34, 0, -1.1240172, 0)
+mesh = SubResource("PlaneMesh_at62a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water" unique_id=1389982537]
+shape = SubResource("BoxShape3D_kjgfh")
+
+[node name="water" parent="water" unique_id=468392983 instance=ExtResource("1_2jawf")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2083193882]
+environment = SubResource("Environment_qao77")
+
+[node name="Platform" parent="." unique_id=347854689 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Platform2" parent="." unique_id=1369045665 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.1652818, 0, 0)
+
+[node name="Platform3" parent="." unique_id=1425270425 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.4207592, 0, -3.9524593)
+
+[node name="Platform4" parent="." unique_id=1973226910 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -0.039090157, 0, -4.080922)
+
+[node name="Platform5" parent="." unique_id=1455179769 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.1795993, 0, -3.9449677)
+
+[node name="Platform6" parent="." unique_id=1036521699 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.2532907, 0, 0.028512955)
+
+[node name="Platform7" parent="." unique_id=672160266 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.3005157, 0, 3.4801311)
+
+[node name="Platform8" parent="." unique_id=1298318968 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -0.00217247, 0, 3.7425647)
+
+[node name="Platform9" parent="." unique_id=1643474569 instance=ExtResource("2_kjgfh")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.0644417, 0, 3.9781442)
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1013677769]
+
+[node name="SpawnPoint1" type="Marker3D" parent="SpawnPoints" unique_id=1743423582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055669695, 3.2525802, 3.7230785)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SpawnPoints" unique_id=1567025021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055939794, 3.24834, -4.109788)
+
+[node name="SpawnPoint3" type="Marker3D" parent="SpawnPoints" unique_id=341136485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1230931, 3.2909184, 0)
+
+[node name="SpawnPoint4" type="Marker3D" parent="SpawnPoints" unique_id=1126122906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3544478, 3.290627, 0.033510625)
