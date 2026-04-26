@@ -3,12 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://3ab42n2lg1ye" path="res://water.tscn" id="1_2jawf"]
 [ext_resource type="Script" uid="uid://bhv8s6o6og5tj" path="res://game_area.gd" id="1_jhsbd"]
 [ext_resource type="PackedScene" uid="uid://c0jut6oigvhu0" path="res://platform.tscn" id="2_kjgfh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvdq0"]
-albedo_color = Color(0.45982563, 0.3734363, 1.92523e-07, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_at62a"]
-material = SubResource("StandardMaterial3D_fvdq0")
+[ext_resource type="PackedScene" uid="uid://b23qo5mwnpfqg" path="res://spectate_camera.tscn" id="4_2jawf"]
+[ext_resource type="Script" uid="uid://j6wl72f4448p" path="res://addons/zylann.hterrain/hterrain.gd" id="5_6pj22"]
+[ext_resource type="Resource" uid="uid://cnsjsllxrvpq5" path="res://Terrain/data.hterrain" id="6_cuw73"]
+[ext_resource type="Script" uid="uid://cj151g0ue5au3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_qao77"]
+[ext_resource type="Shader" uid="uid://cv2h2ijbar7aq" path="res://addons/zylann.hterrain/shaders/detail.gdshader" id="10_mpgjw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjgfh"]
 
@@ -23,60 +22,102 @@ sky_material = SubResource("ProceduralSkyMaterial_6pj22")
 background_mode = 2
 sky = SubResource("Sky_euob4")
 
+[sub_resource type="Resource" id="Resource_ydyo8"]
+script = ExtResource("7_qao77")
+mode = 0
+textures = [[], []]
+
 [node name="game_area" type="Node3D" unique_id=1049462890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -89.44898)
 script = ExtResource("1_jhsbd")
 
 [node name="water" type="StaticBody3D" parent="." unique_id=1441401413]
-
-[node name="ground" type="MeshInstance3D" parent="water" unique_id=156464859]
-transform = Transform3D(20.34, 0, 0, 0, 20.34, 0, 0, 0, 20.34, 0, -1.1240172, 0)
-mesh = SubResource("PlaneMesh_at62a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.99599, 6.7827396, 248.4748)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="water" unique_id=1389982537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.1054554, 0)
 shape = SubResource("BoxShape3D_kjgfh")
 
 [node name="water" parent="water" unique_id=468392983 instance=ExtResource("1_2jawf")]
+transform = Transform3D(6.81, 0, 0, 0, 6.81, 0, 0, 0, 6.81, -0.0043640137, -6.7597103, 0.014511108)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2083193882]
 environment = SubResource("Environment_qao77")
 
 [node name="Platform" parent="." unique_id=347854689 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 183.99599, -0.32271576, 248.4748)
 
 [node name="Platform2" parent="." unique_id=1369045665 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.1652818, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 181.0385, -0.32271576, 248.39056)
 
 [node name="Platform3" parent="." unique_id=1425270425 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.4207592, 0, -3.9524593)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 181.12305, -0.32271576, 245.19754)
 
 [node name="Platform4" parent="." unique_id=1973226910 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -0.039090157, 0, -4.080922)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 183.9569, -0.32271576, 245.1839)
 
 [node name="Platform5" parent="." unique_id=1455179769 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.1795993, 0, -3.9449677)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 186.64406, -0.32271576, 245.31985)
 
 [node name="Platform6" parent="." unique_id=1036521699 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.2532907, 0, 0.028512955)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 186.71774, -0.32271576, 248.5033)
 
 [node name="Platform7" parent="." unique_id=672160266 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 3.3005157, 0, 3.4801311)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 186.76497, -0.32271576, 251.55972)
 
 [node name="Platform8" parent="." unique_id=1298318968 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -0.00217247, 0, 3.7425647)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 183.99382, -0.32271576, 251.82217)
 
 [node name="Platform9" parent="." unique_id=1643474569 instance=ExtResource("2_kjgfh")]
-transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, -3.0644417, 0, 3.9781442)
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 1, 181.13936, -0.32271576, 251.7699)
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=1013677769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.99599, -0.32271576, 248.4748)
 
 [node name="SpawnPoint1" type="Marker3D" parent="SpawnPoints" unique_id=1743423582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055669695, 3.2525802, 3.7230785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055669695, 3.2525802, 3.3278892)
 
 [node name="SpawnPoint2" type="Marker3D" parent="SpawnPoints" unique_id=1567025021]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055939794, 3.24834, -4.109788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055939794, 3.24834, -3.3197443)
 
 [node name="SpawnPoint3" type="Marker3D" parent="SpawnPoints" unique_id=341136485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1230931, 3.2909184, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.975769, 3.2909184, -0.001159668)
+
+[node name="SpawnPoint8" type="Marker3D" parent="SpawnPoints" unique_id=749665612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8427238, 3.2909184, -3.3377738)
+
+[node name="SpawnPoint7" type="Marker3D" parent="SpawnPoints" unique_id=1294402617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8270721, 3.2909184, 3.2639008)
 
 [node name="SpawnPoint4" type="Marker3D" parent="SpawnPoints" unique_id=1126122906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3544478, 3.290627, 0.033510625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6726665, 3.264761, 0.0064312816)
+
+[node name="SpawnPoint5" type="Marker3D" parent="SpawnPoints" unique_id=1880542756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8190613, 3.290627, 3.1144867)
+
+[node name="SpawnPoint6" type="Marker3D" parent="SpawnPoints" unique_id=512419042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6936798, 3.290627, -3.1417542)
+
+[node name="SpectateCamera" parent="." unique_id=1242048455 instance=ExtResource("4_2jawf")]
+transform = Transform3D(0.051259734, -0.3557897, 0.9331592, -0.015847974, 0.93398005, 0.35697323, -0.9985595, -0.03308704, 0.04223703, 190.90514, 12.542238, 248.43939)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=21459948]
+
+[node name="HTerrain" type="Node3D" parent="Node3D" unique_id=894384423]
+script = ExtResource("5_6pj22")
+_terrain_data = ExtResource("6_cuw73")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = ExtResource("10_mpgjw")
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_ydyo8")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://j6wl72f4448p"

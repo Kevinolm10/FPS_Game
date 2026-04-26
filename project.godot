@@ -18,10 +18,19 @@ config/icon="res://icon.svg"
 [autoload]
 
 NetworkManager="*uid://bncu6nx2ifsp1"
+DebugMenu="*uid://cggqb75a8w8r"
 
 [dotnet]
 
 project/assembly_name="fps_test"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 

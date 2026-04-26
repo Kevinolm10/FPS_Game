@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b23qo5mwnpfqg"]
+
+[node name="SpectateCamera" type="Node3D" unique_id=1242048455]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=729382757]

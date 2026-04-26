@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://8fs1n0uu0j52"]
+[gd_scene format=3 uid="uid://cygl5e1ifwj47"]
 
 [ext_resource type="Script" uid="uid://bin4554pe3tx3" path="res://main_character.gd" id="1_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://oxmigsyu5idx" path="res://ak_47.tscn" id="2_hqtel"]
@@ -7,14 +7,6 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f3njc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48ufq"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uvl38"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
 [node name="playermodel" type="CharacterBody3D" unique_id=2056619798 groups=["player"]]
 transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
@@ -35,8 +27,5 @@ transform = Transform3D(-0.0066912044, 0, 0.13483408, 0, 0.135, 0, -0.13483408, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=892719417]
 shape = SubResource("CapsuleShape3D_48ufq")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=953233612]
-replication_config = SubResource("SceneReplicationConfig_uvl38")
 
 [node name="Control" parent="." unique_id=1998660719 instance=ExtResource("3_sweqy")]

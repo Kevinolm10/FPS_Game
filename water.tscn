@@ -4,7 +4,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhsbd"]
 transparency = 1
-albedo_color = Color(0.6862745, 1, 1, 0.1254902)
+albedo_color = Color(0.6862745, 1, 1, 0.6313726)
 roughness = 0.1
 clearcoat_enabled = true
 clearcoat = 0.55
@@ -16,10 +16,11 @@ material = SubResource("StandardMaterial3D_jhsbd")
 size = Vector3(40.185913, 0.04345703, 40.621216)
 
 [node name="water" type="StaticBody3D" unique_id=468392983]
+transform = Transform3D(1.045, 0, 0, 0, 1.045, 0, 0, 0, 1.045, 0, 0, 0)
 script = ExtResource("1_qi1wl")
 
 [node name="liquid" type="MeshInstance3D" parent="." unique_id=844429162]
-transform = Transform3D(20.34, 0, 0, 0, 20.34, 0, 0, 0, 20.34, 0, -0.51667404, 0)
+transform = Transform3D(20.34, 0, 0, 0, 20.34, 0, 0, 0, 20.34, 0, -0.14477205, 0)
 mesh = SubResource("PlaneMesh_seble")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2102036132]

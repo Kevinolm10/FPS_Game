@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cvcqfldggwfqn"]
+
+[ext_resource type="PackedScene" uid="uid://i38bemeqk60a" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/ak47.glb" id="1_y3opf"]
+
+[node name="ak472" unique_id=1489386309 groups=["rifle"] instance=ExtResource("1_y3opf")]
+
+[node name="ak47" parent="." index="0" unique_id=58644046 groups=["rifle"]]

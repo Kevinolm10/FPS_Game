@@ -1,28 +1,29 @@
 extends Node3D
 
 func _ready() -> void:
+	var role := "SERVER" if multiplayer.is_server() else "CLIENT"
+	print("[GameArea][", role, " id=", multiplayer.get_unique_id(), "] Loaded game_area.tscn")
+
+	var spectate_camera := $SpectateCamera/Camera3D as Camera3D
+	if spectate_camera != null:
+		spectate_camera.current = false
+		print("[GameArea] Spectate camera reset to current=false")
+
 	var points = $SpawnPoints.get_children()
 	NetworkManager.register_spawn_points(points)
-	print("Game area spawn points registered: ", points.size())
+	print("[GameArea] Spawn points registered count=", points.size())
 
 	if multiplayer.is_server():
-		# Server spawns immediately if no clients connected
+		# If no clients have connected yet, spawn everyone now
 		if multiplayer.get_peers().is_empty():
-			NetworkManager._respawn_all_players()
+			print("[GameArea][SERVER] No peers connected. Spawning all players immediately")
+			NetworkManager._spawn_all_players()
+		# Otherwise wait for all clients to report ready (handled by client_ready_in_scene)
+		else:
+			print("[GameArea][SERVER] Waiting for clients to report ready: ", multiplayer.get_peers())
 	else:
-		# Tell server this client is ready
+		# Tell the server this client has loaded the scene.
+		# The server will call _spawn_all_players once everyone is ready.
+		# Do NOT manually spawn here — the server drives all spawning via _spawn_player RPC.
+		print("[GameArea][CLIENT] Reporting ready to server")
 		NetworkManager.client_ready_in_scene.rpc_id(1)
-
-		for player_id in NetworkManager.players.keys():
-			var old = NetworkManager.players[player_id]
-			if is_instance_valid(old):
-				old.queue_free()
-			NetworkManager.players.erase(player_id)
-
-		await get_tree().process_frame
-
-		var all_players = Array(multiplayer.get_peers())
-		all_players.append(multiplayer.get_unique_id())
-
-		for player_id in all_players:
-			NetworkManager._spawn_player_for_all(player_id)

@@ -2,16 +2,20 @@
 
 [ext_resource type="Script" uid="uid://n2o2xasmiwwd" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c6hvmy4ab2nyj" path="res://start_game.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://3ab42n2lg1ye" path="res://water.tscn" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://j6wl72f4448p" path="res://addons/zylann.hterrain/hterrain.gd" id="4_272bh"]
+[ext_resource type="Resource" uid="uid://chnl54oarl6gu" path="res://mainterrain/data.hterrain" id="5_5vw27"]
+[ext_resource type="Script" uid="uid://cj151g0ue5au3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="6_kek77"]
 
 [sub_resource type="Sky" id="Sky_0xm2m"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 background_mode = 1
-background_color = Color(0.45173937, 0.44922966, 0.5319738, 1)
+background_color = Color(0.8288197, 0.94431835, 0.9878258, 1)
 sky = SubResource("Sky_0xm2m")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
-albedo_color = Color(0.9672434, 0.7250903, 0.86760205, 1)
+albedo_color = Color(0.2191562, 0.012378573, 0.15764016, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
 
@@ -20,6 +24,11 @@ size = Vector3(1.9974976, 0.49951172, 2.0722656)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(1.0744629, 6.3476563, 1)
+
+[sub_resource type="Resource" id="Resource_4c57u"]
+script = ExtResource("6_kek77")
+mode = 0
+textures = [[], []]
 
 [node name="Main" type="Node3D" unique_id=935206790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0010875314, 0)
@@ -30,7 +39,11 @@ script = ExtResource("1_0xm2m")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviornment" unique_id=1480894903]
 environment = SubResource("Environment_h2yge")
 
+[node name="water" parent="Enviornment" unique_id=468392983 instance=ExtResource("2_7mycd")]
+transform = Transform3D(1.045, 0, 0, 0, 1.045, 0, 0, 0, 1.045, 0, 1.3566127, 0)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=792354840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3222665, 0)
 
 [node name="Ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=562983396]
 material_override = SubResource("StandardMaterial3D_ig7tw")
@@ -41,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005706787, -0.25024414, 0.
 shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="WorldBorder" type="StaticBody3D" parent="." unique_id=1943580793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3222665, 0)
 
 [node name="BorderShape" type="CollisionShape3D" parent="WorldBorder" unique_id=60445867]
 transform = Transform3D(1.86, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.00073219184, 0.3589887, -1.0661134)
@@ -59,6 +73,7 @@ transform = Transform3D(-8.1303185e-08, 0, -0.10999999, 0, 0.11, 0, 1.86, 0, -4.
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=159501696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3222665, 0)
 
 [node name="SpawnPoint1" type="Marker3D" parent="SpawnPoints" unique_id=46760508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012264162, 0.5640438)
@@ -73,4 +88,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61526704, 0.012264162, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012264162, -0.6554619)
 
 [node name="StartGame" parent="." unique_id=1110941525 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.045, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.3672664, 0)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=2114504708]
+
+[node name="HTerrain" type="Node3D" parent="Node3D" unique_id=392751908]
+script = ExtResource("4_272bh")
+centered = true
+_terrain_data = ExtResource("5_5vw27")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "LowPoly"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_4c57u")
+render_layers = 1
+cast_shadow = 1
+metadata/_custom_type_script = "uid://j6wl72f4448p"
