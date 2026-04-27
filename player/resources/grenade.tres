@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://btaeiy0wqwjts"]
+
+[ext_resource type="PackedScene" uid="uid://cqhoro3q5bn2i" path="res://grenade.tscn" id="1_erik5"]
+[ext_resource type="Script" uid="uid://75iufsf5cl2" path="res://player/resources/weapon_resource.gd" id="1_w38hr"]
+
+[resource]
+script = ExtResource("1_w38hr")
+weapon_name = "Grenade"
+group_name = "throwable"
+hold_animation = "Mplayer/pistol_anim"
+fire_rate = 1.0
+damage = 75
+mag_size = 2
+model_scene = ExtResource("1_erik5")
+metadata/_custom_type_script = "uid://75iufsf5cl2"

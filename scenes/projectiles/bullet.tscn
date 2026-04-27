@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cw8cnpiebdo3e"]
+
+[ext_resource type="Script" uid="uid://bt8qr4byv15tk" path="res://scripts/bullet.gd" id="1_v8qja"]
+[ext_resource type="PackedScene" uid="uid://gqprpkmre7fq" path="res://Styloo Guns Asset Pack GLTF FBX V1.1/zEmission version Color only/GLB/bullet1.glb" id="2_t4vbm"]
+
+[node name="Bullet" type="CharacterBody3D" unique_id=1543615070 groups=["bullet"]]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+script = ExtResource("1_v8qja")
+
+[node name="bullet12" parent="." unique_id=515426254 instance=ExtResource("2_t4vbm")]
+transform = Transform3D(19.505, 0, 0, 0, -8.525906e-07, -19.505, 0, 19.505, -8.525906e-07, 0, 0, 0)

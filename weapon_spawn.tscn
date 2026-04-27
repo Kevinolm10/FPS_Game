@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://caajm06gomhux"]
+
+[ext_resource type="Script" uid="uid://cmuheofwp3hfj" path="res://weapon_spawn.gd" id="1_k4mue"]
+[ext_resource type="Resource" path="res://player/resources/grenade.tres" id="2_k4mue"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wokt0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm4oa"]
+size = Vector3(1, 0.89086914, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4mue"]
+size = Vector3(1.9833374, 0.00793457, 1.9951782)
+
+[node name="weapon_spawn" type="StaticBody3D" unique_id=1610487121]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
+script = ExtResource("1_k4mue")
+weapon_resource = ExtResource("2_k4mue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=998634383]
+mesh = SubResource("PlaneMesh_wokt0")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1278741157]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=156254065]
+transform = Transform3D(2.025, 0, 0, 0, 1, 0, 0, 0, 1.995, 0, 0.44396973, 0)
+shape = SubResource("BoxShape3D_qm4oa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1349981624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015563965, 0.00579834, 0.0035095215)
+shape = SubResource("BoxShape3D_k4mue")

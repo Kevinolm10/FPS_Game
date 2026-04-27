@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bcw0786472ojm"]
+[gd_scene format=4 uid="uid://cqosilwu78ts6"]
 
 [ext_resource type="Script" uid="uid://didcenlyk3tu6" path="res://player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://baut2l6kw515f" path="res://player/components/health_component.gd" id="2_health"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://o322njvpctv1" path="res://player/components/animation_component.gd" id="3_animation"]
 [ext_resource type="AnimationLibrary" uid="uid://cj8bggbtc4i88" path="res://assets/characters/Mplayer.glb" id="3_du17n"]
 [ext_resource type="Script" uid="uid://e7n5v6ogq520" path="res://player/components/weapon_component.gd" id="4_weapon"]
-[ext_resource type="Script" uid="uid://75iufsf5cl2" path="res://player/resources/weapon_resource.gd" id="5_dtfb8"]
+[ext_resource type="Resource" path="res://player/resources/rifle.tres" id="5_k3gim"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0hq6"]
 resource_name = "Character_body"
@@ -401,7 +401,7 @@ script = ExtResource("3_animation")
 
 [node name="WeaponComponent" type="Node" parent="." unique_id=171002232]
 script = ExtResource("4_weapon")
-weapons = Array[ExtResource("5_dtfb8")]([null])
+weapons = [ExtResource("5_k3gim")]
 
 [node name="Armature" type="Node3D" parent="." unique_id=1321872778]
 transform = Transform3D(0.045485012, 0, 0.998965, 0, 1, 0, -0.998965, 0, 0.045485012, 0.16674323, -0.42214182, -0.00067418127)
@@ -461,14 +461,14 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(0.99997705, 0.0067654345, 0.00040141496, -0.0067660464, 0.9931425, 0.11671447, 0.0003909618, -0.1167145, 0.99316543, 4.656613e-09, 0.8082741, 2.6077032e-08)
 bones/7/enabled = true
 bones/7/position = Vector3(4.656613e-09, 0.8082741, 2.6077032e-08)
-bones/7/rotation = Quaternion(-0.083779775, 0.032265518, 0.6654244, 0.7410468)
+bones/7/rotation = Quaternion(0.2682877, -0.43672436, 0.66838455, 0.5390323)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "hand_right"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 4.6488072e-10, -3.4700733e-17, -4.6488072e-10, 1, -2.6949014e-11, 3.4688206e-17, 2.6949014e-11, 1, 1.0491333e-09, 1.4540482, -2.6947536e-08)
 bones/8/enabled = true
 bones/8/position = Vector3(1.0491333e-09, 1.4540482, -2.6947536e-08)
-bones/8/rotation = Quaternion(-1.4746183e-10, -1.4199171e-09, 0.09950373, 0.9950372)
+bones/8/rotation = Quaternion(0.5503778, 0.09933157, 0.6161339, 0.5546139)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.008"
 bones/9/parent = 0
@@ -496,7 +496,7 @@ bones/12/parent = 9
 bones/12/rest = Transform3D(0.9999677, -0.0080199, 0.0005574258, 0.008019898, 0.9903519, -0.13834272, 0.0005574471, 0.13834272, 0.9903843, 3.7252903e-09, 0.9955852, -4.5634806e-08)
 bones/12/enabled = true
 bones/12/position = Vector3(3.7252903e-09, 0.9955852, -4.5634806e-08)
-bones/12/rotation = Quaternion(0.15809123, 0.6336, 0.5338773, 0.53715307)
+bones/12/rotation = Quaternion(0.04515458, 0.007854517, 0.75206435, 0.6574941)
 bones/12/scale = Vector3(1, 0.99999994, 1)
 bones/13/name = "hand_left"
 bones/13/parent = 12
@@ -589,12 +589,11 @@ skin = SubResource("Skin_xiltt")
 skeleton = NodePath("..")
 
 [node name="r_right" type="BoneAttachment3D" parent="Armature/Skeleton3D" unique_id=2068961063]
-transform = Transform3D(0.09607101, 0.9953522, 0.0066355956, -0.051103577, -0.0017253399, 0.99869186, 0.99406165, -0.09628446, 0.050700326, 1.4462928, 1.0988121, 0.95239604)
+transform = Transform3D(0.8673309, -0.42231268, -0.26341677, 0.21929456, -0.1508663, 0.9639238, -0.44681817, -0.8938069, -0.038240194, 1.4109253, 0.7647532, 0.7899475)
 bone_name = "hand_right"
 bone_idx = 8
 
 [node name="WeaponHolder" type="Node3D" parent="Armature/Skeleton3D/r_right" unique_id=1489386309]
-transform = Transform3D(3.9927795, 0.2986281, 1.1102064, -0.28979406, 4.144248, -0.072514735, -1.1125453, -0.0077486765, 4.0032754, -1.1600385, 0.24852312, 0.07679421)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2095356354]
 libraries/ = SubResource("AnimationLibrary_l8yun")

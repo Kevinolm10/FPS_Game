@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://cpnomiu6ix3vl"]
+
+[ext_resource type="Script" uid="uid://75iufsf5cl2" path="res://player/resources/weapon_resource.gd" id="1_weapon_resource"]
+[ext_resource type="PackedScene" uid="uid://bsihc5vsrhw3g" path="res://scenes/weapons/mac_10.tscn" id="2_model"]
+
+[resource]
+script = ExtResource("1_weapon_resource")
+weapon_name = "Pistol"
+group_name = "pistol"
+hold_animation = "pistol_armed"
+damage = 35
+mag_size = 15
+model_scene = ExtResource("2_model")

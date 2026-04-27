@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://oxmigsyu5idx"]
+
+[ext_resource type="Script" uid="uid://coq0rrwrnvg13" path="res://scripts/ak_47.gd" id="1_dr6il"]
+[ext_resource type="PackedScene" uid="uid://di6er67xvpjf4" path="res://assets/weapons/AKupdated.glb" id="2_evla6"]
+
+[node name="ak_47" type="Node3D" unique_id=861563308]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+script = ExtResource("1_dr6il")
+
+[node name="AK" parent="." unique_id=1460539099 instance=ExtResource("2_evla6")]

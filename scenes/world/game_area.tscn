@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://dwh7fsxjt0dw5"]
+[gd_scene format=3 uid="uid://cc3dtlm0c4l4u"]
 
-[ext_resource type="PackedScene" uid="uid://c6ya6iokl54vj" path="res://water.tscn" id="1_2jawf"]
-[ext_resource type="Script" path="res://game_area.gd" id="1_jhsbd"]
-[ext_resource type="PackedScene" uid="uid://c4ok2qfskq0c0" path="res://platform.tscn" id="2_kjgfh"]
-[ext_resource type="PackedScene" uid="uid://bkbcr4p5k4kbu" path="res://spectate_camera.tscn" id="4_2jawf"]
+[ext_resource type="PackedScene" uid="uid://3ab42n2lg1ye" path="res://scenes/world/water.tscn" id="1_2jawf"]
+[ext_resource type="Script" uid="uid://bhv8s6o6og5tj" path="res://scripts/game_area.gd" id="1_jhsbd"]
+[ext_resource type="PackedScene" uid="uid://c0jut6oigvhu0" path="res://scenes/world/platform.tscn" id="2_kjgfh"]
+[ext_resource type="PackedScene" uid="uid://b23qo5mwnpfqg" path="res://scenes/world/spectate_camera.tscn" id="4_2jawf"]
 [ext_resource type="Script" uid="uid://j6wl72f4448p" path="res://addons/zylann.hterrain/hterrain.gd" id="5_6pj22"]
 [ext_resource type="Resource" uid="uid://cnsjsllxrvpq5" path="res://Terrain/data.hterrain" id="6_cuw73"]
 [ext_resource type="Script" uid="uid://cj151g0ue5au3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="7_qao77"]
@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.1054554, 0)
 shape = SubResource("BoxShape3D_kjgfh")
 
 [node name="water" parent="water" unique_id=468392983 instance=ExtResource("1_2jawf")]
-transform = Transform3D(6.81, 0, 0, 0, 6.81, 0, 0, 0, 6.81, -0.0043640137, -6.7597103, 0.014511108)
+transform = Transform3D(8.055, 0, 0, 0, 8.055, 0, 0, 0, 8.055, 0, -9.06922, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2083193882]
 environment = SubResource("Environment_qao77")

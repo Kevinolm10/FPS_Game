@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cqhoro3q5bn2i"]
+
+[ext_resource type="PackedScene" uid="uid://co4j64cb7nd8v" path="res://assets/weapons/grenade.glb" id="1_gju2f"]
+
+[node name="grenade" type="RigidBody3D" unique_id=968927256]
+transform = Transform3D(1.21, 0, 0, 0, 1.21, 0, 0, 0, 1.21, 0, 0, 0)
+
+[node name="grenademesh" parent="." unique_id=1003767431 instance=ExtResource("1_gju2f")]
